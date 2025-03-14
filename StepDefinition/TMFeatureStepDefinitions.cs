@@ -1,33 +1,55 @@
 using System;
+using System.Security.AccessControl;
+using NUnit.Framework;
+using OpenQA.Selenium.Chrome;
 using Reqnroll;
+using ReqnrollTurnUpPortal.Pages;
+using ReqnrollTurnUpPortal.Utilities;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ReqnrollTurnUpPortal.StepDefinition
 {
     [Binding]
-    public class TMFeatureStepDefinitions
+    public class TMFeatureStepDefinitions : CommonDriver
     {
         [Given("I logged into turnup Portal successfully")]
         public void GivenILoggedIntoTurnupPortalSuccessfully()
         {
-            throw new PendingStepException();
+            driver = new ChromeDriver();
+
+            LoginPage loginPage = new LoginPage();
+            loginPage.LoginActions(driver);
         }
 
         [Given("I navigate to Time and material page")]
         public void GivenINavigateToTimeAndMaterialPage()
         {
-            throw new PendingStepException();
+            // Home page object initialization
+            HomePage homePage = new HomePage();
+            homePage.NavigateToTMPage(driver);
         }
 
         [When("I create a new time and material record")]
         public void WhenICreateANewTimeAndMaterialRecord()
         {
-            throw new PendingStepException();
+            // TM page object initialization
+            TMPage tMPage = new TMPage();
+            tMPage.CreateTimeRecord(driver);
         }
 
         [Then("The record should be successfully created")]
         public void ThenTheRecordShouldBeSuccessfullyCreated()
         {
-            throw new PendingStepException();
+            TMPage tMPage = new TMPage();
+
+
+            string code = tMPage.GetCode(driver); //code is equivalent to Iwebelement.Text which is in the method GetCode newCode.Text
+            string description = tMPage.GetDescription(driver);
+            string price = tMPage.GetPrice(driver);
+      
+            Assert.That(code == "TA Programme", "Actual and excepted code doesn't match");
+            Assert.That(description == "This is a description", "Actual and excepted description doesn't match");
+            Assert.That(price == "$12.00", "Actual and excepted price doesn't match");
         }
     }
 }
