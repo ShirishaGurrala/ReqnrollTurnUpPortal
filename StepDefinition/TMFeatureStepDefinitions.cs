@@ -51,5 +51,27 @@ namespace ReqnrollTurnUpPortal.StepDefinition
             Assert.That(description == "This is a description", "Actual and excepted description doesn't match");
             Assert.That(price == "$12.00", "Actual and excepted price doesn't match");
         }
+
+        [When("edited time and material record with {string}")]
+        public void WhenEditedTimeAndMaterialRecordWith(string code)
+        {
+            TMPage tMPage = new TMPage();
+            tMPage.EditTimeRecord(driver, code);
+
+        }
+         
+        [Then("The edited record {string} should be successfully edited")]
+        public void ThenTheEditedRecordShouldBeSuccessfullyEdited(string code)
+        {
+            TMPage tMPage = new TMPage();
+
+
+            string codeValue = tMPage.GetCode(driver); //code is equivalent to Iwebelement.Text which is in the method GetCode newCode.Text
+            string description = tMPage.GetDescription(driver);
+          
+            Assert.That(codeValue == code, "Actual and excepted code doesn't match");
+            Assert.That(description == code + " description", "Actual and excepted description doesn't match");
+
+        }
     }
 }

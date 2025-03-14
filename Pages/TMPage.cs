@@ -85,19 +85,19 @@ namespace ReqnrollTurnUpPortal.Pages
             return newDescription.Text;
         }
 
-        public string GetPrice(IWebDriver driver)
+        public String GetPrice(IWebDriver driver)
         {
             IWebElement newPrice = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
             return newPrice.Text;
         }
 
 
-        public void EditTimeRecord(IWebDriver driver)
+        public void EditTimeRecord(IWebDriver driver, String code)
         {
             // Go to last page 
             IWebElement goToLastEditPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             goToLastEditPageButton.Click();
-
+            Thread.Sleep(3000);
             // edit last item ( identify edit button the last item)
             IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
             editButton.Click();
@@ -108,12 +108,12 @@ namespace ReqnrollTurnUpPortal.Pages
             // Type code into Code textbox
             IWebElement editCodeTextbox = driver.FindElement(By.Id("Code"));
             editCodeTextbox.Clear();
-            editCodeTextbox.SendKeys("Editedtest12");
+            editCodeTextbox.SendKeys(code);
 
             //Type description into Description textbox
             IWebElement editDescriptionTextbox = driver.FindElement(By.Id("Description"));
             editDescriptionTextbox.Clear();
-            editDescriptionTextbox.SendKeys("Editedtest12 description");
+            editDescriptionTextbox.SendKeys(code + " description");
 
             // Click on Save button
             IWebElement saveEditButton = driver.FindElement(By.Id("SaveButton"));
@@ -123,30 +123,31 @@ namespace ReqnrollTurnUpPortal.Pages
             // navigate to last page
             IWebElement goToLastEditedPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             goToLastEditedPageButton.Click();
-
+            Thread.Sleep(3000);
             // identify last element and verify two fields 
 
-            IWebElement newEditCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (newEditCode.Text == "Editedtest12")
-            {
-                Console.WriteLine("Time record code edited successfuly!");
-            }
-            else
-            {
-                Console.WriteLine("Time record has not been edited!");
-            }
+            //IWebElement newEditCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            //if (newEditCode.Text == "Editedtest12")
+            //{
+            //    Console.WriteLine("Time record code edited successfuly!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Time record has not been edited!");
+            //}
 
-            IWebElement newEditDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
-            if (newEditDescription.Text == "Editedtest12 description")
-            {
-                Console.WriteLine("Time record description edited successfuly!");
-            }
-            else
-            {
-                Console.WriteLine("Time record has not been edited!");
-            }
+            //IWebElement newEditDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            //if (newEditDescription.Text == "Editedtest12 description")
+            //{
+            //    Console.WriteLine("Time record description edited successfuly!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Time record has not been edited!");
+            //}
             Thread.Sleep(3000);
         }
+
         public void DeleteTimeRecord(IWebDriver driver)
         {
             //Identify fisrt element and retrieve code and description values

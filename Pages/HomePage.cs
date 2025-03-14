@@ -34,7 +34,7 @@ namespace ReqnrollTurnUpPortal.Pages
             IWebElement timeAndMaterialOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
             timeAndMaterialOption.Click();
 
-            
+            Thread.Sleep(3000);
 
 
         }
