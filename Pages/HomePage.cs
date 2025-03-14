@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using TATurnUpPortal.Utilities;
+using ReqnrollTurnUpPortal.Utilities;
 
-namespace TATurnUpPortal.Pages
+namespace ReqnrollTurnUpPortal.Pages
 {
     public class HomePage
     {

@@ -7,11 +7,11 @@ using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools.V131.DOM;
-using TATurnUpPortal.Pages;
-using TATurnUpPortal.Utilities;
+using ReqnrollTurnUpPortal.Pages;
+using ReqnrollTurnUpPortal.Utilities;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace TATurnUpPortal.Tests
+namespace ReqnrollTurnUpPortal.Tests
 {
     [TestFixture]
     public class TM_Tests : CommonDriver
