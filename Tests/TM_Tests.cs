@@ -43,9 +43,10 @@ namespace ReqnrollTurnUpPortal.Tests
         public void EditTime_Test()
         {
             TMPage tMPage = new TMPage();
-            //String code = "editedcode";
-            //tMPage.EditTimeRecord(driver, code);
-            tMPage.EditTimeRecord(driver, "editedcode");
+           // String code = "editedcode";
+            //tMPage.EditTimeRecord(driver); first time
+            //tMPage.EditTimeRecord(driver, code); 
+            tMPage.EditTimeRecord(driver, "Editedtest12", "Editedtest12 description");
         }
         [Test]
         public void DeleteTime_Test()

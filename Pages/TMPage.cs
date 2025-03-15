@@ -92,8 +92,9 @@ namespace ReqnrollTurnUpPortal.Pages
         }
 
 
-        public void EditTimeRecord(IWebDriver driver, String code)
+        public void EditTimeRecord(IWebDriver driver, String code, String description)
         {
+          
             // Go to last page 
             IWebElement goToLastEditPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             goToLastEditPageButton.Click();
@@ -113,7 +114,7 @@ namespace ReqnrollTurnUpPortal.Pages
             //Type description into Description textbox
             IWebElement editDescriptionTextbox = driver.FindElement(By.Id("Description"));
             editDescriptionTextbox.Clear();
-            editDescriptionTextbox.SendKeys(code + " description");
+            editDescriptionTextbox.SendKeys(description);
 
             // Click on Save button
             IWebElement saveEditButton = driver.FindElement(By.Id("SaveButton"));
